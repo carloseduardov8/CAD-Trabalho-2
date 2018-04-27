@@ -6,11 +6,8 @@
 using namespace std;
 
 #define N 1000000
-#define D 20
+#define D 100
 
-
-int similar = 0;
-int* powArr;
 
 // Function declarations:
 void findCentroids(Matrix* matrix);
@@ -19,18 +16,17 @@ void findCentroids(Matrix* matrix);
 // Main program:
 int main(){
 
+    // Starts the stopwatch:
+	struct timespec start, finish;
+    clock_gettime(CLOCK_MONOTONIC, &start);
+
 	// Loads the data matrix:
 	Matrix data(N, D, true);
 
 	// Generates random data for matrix:
 	data.generateRandom();
 
-    // Starts the stopwatch:
-	struct timespec start, finish;
-    clock_gettime(CLOCK_MONOTONIC, &start);
-    cout << "Start!" << endl;
-
-    // Runs binary clustering algorithm:
+    // Runs centroid finding algorithm:
     findCentroids(&data);
 
 	// Stops the stopwatch:
@@ -59,13 +55,13 @@ void findCentroids(Matrix* matrix){
     // Loops through designated columns:
 	for (int j = 0; j < D; j++){
         // Accumulator:
-        data_t acc = 0;
+        //data_t acc = 0;
         // Loops through lines:
 		for (int i = 0; i < N; i++){
-            acc += matrix->get(i, j);
+            centroids[j] += matrix->get(i, j);
         }
         // Writes accumulator mean:
-        centroids[j] = acc / N;
+        centroids[j] /= N;
     }
 
 
@@ -75,32 +71,3 @@ void findCentroids(Matrix* matrix){
     }
 
 }
-
-void findCentroids(int threadId, data_t* centroids, Matrix* matrix){
-
-    // Loops through designated columns:
-	for (int j = 0; j < D; j++){
-        // Loops through lines:
-		for (int i = 0; i < N; i++){
-            centroids[j] += matrix->get(i, j);
-        }
-        centroids[j] /= N;
-    }
-
-}
-/*
-void findCentroids(int threadId, data_t* centroids, Matrix* matrix){
-
-    // Loops through designated columns:
-	for (int j = 0; j < D; j++){
-        // Accumulator:
-        data_t acc = 0;
-        // Loops through lines:
-		for (int i = 0; i < N; i++){
-            acc += matrix->get(i, j);
-        }
-        // Writes accumulator mean:
-        centroids[j] = acc / N;
-    }
-
-}*/

@@ -2,18 +2,18 @@ Flat profile:
 
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
- time   seconds   seconds    calls  ms/call  ms/call  name    
- 46.81      0.14     0.14        1   140.43   210.64  Matrix::fillLinesSerial()
- 26.75      0.22     0.08 20000000     0.00     0.00  Matrix::get(int, int)
- 23.40      0.29     0.07 20000000     0.00     0.00  Matrix::put(int, int, double)
-  3.34      0.30     0.01        1    10.03    90.27  findCentroids(Matrix*)
-  0.00      0.30     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6MatrixC2Eiib
-  0.00      0.30     0.00        1     0.00     0.00  _GLOBAL__sub_I_similar
-  0.00      0.30     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
-  0.00      0.30     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
-  0.00      0.30     0.00        1     0.00   210.64  Matrix::generateRandom()
-  0.00      0.30     0.00        1     0.00     0.00  Matrix::Matrix(int, int, bool)
-  0.00      0.30     0.00        1     0.00     0.00  Matrix::~Matrix()
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 31.64      0.62     0.62 100000000     0.00     0.00  Matrix::put(int, int, double)
+ 23.66      1.08     0.46        1     0.46     1.08  Matrix::fillLinesSerial()
+ 22.64      1.52     0.44        1     0.44     0.83  findCentroids(Matrix*)
+ 19.81      1.91     0.39 100000000     0.00     0.00  Matrix::get(int, int)
+  2.57      1.96     0.05        1     0.05     0.05  Matrix::Matrix(int, int, bool)
+  0.00      1.96     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6MatrixC2Eiib
+  0.00      1.96     0.00        1     0.00     0.00  _GLOBAL__sub_I_main
+  0.00      1.96     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      1.96     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      1.96     0.00        1     0.00     1.08  Matrix::generateRandom()
+  0.00      1.96     0.00        1     0.00     0.00  Matrix::~Matrix()
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -51,50 +51,50 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 2 byte(s) for 3.32% of 0.30 seconds
+granularity: each sample hit covers 2 byte(s) for 0.51% of 1.96 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]    100.0    0.00    0.30                 main [1]
-                0.00    0.21       1/1           Matrix::generateRandom() [2]
-                0.01    0.08       1/1           findCentroids(Matrix*) [4]
-                0.00    0.00       1/1           Matrix::Matrix(int, int, bool) [17]
+[1]    100.0    0.00    1.96                 main [1]
+                0.00    1.08       1/1           Matrix::generateRandom() [2]
+                0.44    0.39       1/1           findCentroids(Matrix*) [4]
+                0.05    0.00       1/1           Matrix::Matrix(int, int, bool) [7]
                 0.00    0.00       1/1           Matrix::~Matrix() [18]
 -----------------------------------------------
-                0.00    0.21       1/1           main [1]
-[2]     70.0    0.00    0.21       1         Matrix::generateRandom() [2]
-                0.14    0.07       1/1           Matrix::fillLinesSerial() [3]
+                0.00    1.08       1/1           main [1]
+[2]     55.1    0.00    1.08       1         Matrix::generateRandom() [2]
+                0.46    0.62       1/1           Matrix::fillLinesSerial() [3]
 -----------------------------------------------
-                0.14    0.07       1/1           Matrix::generateRandom() [2]
-[3]     70.0    0.14    0.07       1         Matrix::fillLinesSerial() [3]
-                0.07    0.00 20000000/20000000     Matrix::put(int, int, double) [6]
+                0.46    0.62       1/1           Matrix::generateRandom() [2]
+[3]     55.1    0.46    0.62       1         Matrix::fillLinesSerial() [3]
+                0.62    0.00 100000000/100000000     Matrix::put(int, int, double) [5]
 -----------------------------------------------
-                0.01    0.08       1/1           main [1]
-[4]     30.0    0.01    0.08       1         findCentroids(Matrix*) [4]
-                0.08    0.00 20000000/20000000     Matrix::get(int, int) [5]
+                0.44    0.39       1/1           main [1]
+[4]     42.3    0.44    0.39       1         findCentroids(Matrix*) [4]
+                0.39    0.00 100000000/100000000     Matrix::get(int, int) [6]
 -----------------------------------------------
-                0.08    0.00 20000000/20000000     findCentroids(Matrix*) [4]
-[5]     26.7    0.08    0.00 20000000         Matrix::get(int, int) [5]
+                0.62    0.00 100000000/100000000     Matrix::fillLinesSerial() [3]
+[5]     31.5    0.62    0.00 100000000         Matrix::put(int, int, double) [5]
 -----------------------------------------------
-                0.07    0.00 20000000/20000000     Matrix::fillLinesSerial() [3]
-[6]     23.3    0.07    0.00 20000000         Matrix::put(int, int, double) [6]
+                0.39    0.00 100000000/100000000     findCentroids(Matrix*) [4]
+[6]     19.7    0.39    0.00 100000000         Matrix::get(int, int) [6]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [26]
-[13]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6MatrixC2Eiib [13]
+                0.05    0.00       1/1           main [1]
+[7]      2.6    0.05    0.00       1         Matrix::Matrix(int, int, bool) [7]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [25]
+[14]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6MatrixC2Eiib [14]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [25]
+[15]     0.0    0.00    0.00       1         _GLOBAL__sub_I_main [15]
                 0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
 -----------------------------------------------
-                0.00    0.00       1/1           __libc_csu_init [26]
-[14]     0.0    0.00    0.00       1         _GLOBAL__sub_I_similar [14]
-                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [15]
------------------------------------------------
-                0.00    0.00       1/1           _GLOBAL__sub_I_similar [14]
-[15]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [15]
------------------------------------------------
-                0.00    0.00       1/1           _GLOBAL__sub_I__ZN6MatrixC2Eiib [13]
+                0.00    0.00       1/1           _GLOBAL__sub_I_main [15]
 [16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
 -----------------------------------------------
-                0.00    0.00       1/1           main [1]
-[17]     0.0    0.00    0.00       1         Matrix::Matrix(int, int, bool) [17]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN6MatrixC2Eiib [14]
+[17]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [17]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
 [18]     0.0    0.00    0.00       1         Matrix::~Matrix() [18]
@@ -190,7 +190,7 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [13] _GLOBAL__sub_I__ZN6MatrixC2Eiib [16] __static_initialization_and_destruction_0(int, int) [6] Matrix::put(int, int, double)
-  [14] _GLOBAL__sub_I_similar  [2] Matrix::generateRandom() [17] Matrix::Matrix(int, int, bool)
+  [14] _GLOBAL__sub_I__ZN6MatrixC2Eiib [17] __static_initialization_and_destruction_0(int, int) [5] Matrix::put(int, int, double)
+  [15] _GLOBAL__sub_I_main     [2] Matrix::generateRandom() [7] Matrix::Matrix(int, int, bool)
    [4] findCentroids(Matrix*)  [3] Matrix::fillLinesSerial() [18] Matrix::~Matrix()
-  [15] __static_initialization_and_destruction_0(int, int) [5] Matrix::get(int, int)
+  [16] __static_initialization_and_destruction_0(int, int) [6] Matrix::get(int, int)
